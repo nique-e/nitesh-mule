@@ -3,7 +3,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=nique-e&label=Profile%20views&color=0e75b6&style=flat" alt="nique-e" /> </p>
 
-- 🌱 I’m currently learning **React Native**
+- 🌱 I’m currently learning **React **
 
 - 💬 Ask me about **Android**
 
