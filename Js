@@ -1,0 +1,51 @@
+function calculateData() {
+  const dob = document.getElementById("dob").value;
+  const heightCm = parseFloat(document.getElementById("height").value);
+  const weight = parseFloat(document.getElementById("weight").value);
+
+  if (!dob || !heightCm || !weight) {
+    alert("Please fill all fields: DOB, Height (cm), and Weight (kg)");
+    return;
+  }
+
+  const height = heightCm / 100; // Convert cm to meters
+
+  const birthDate = new Date(dob);
+  const today = new Date();
+
+  let years = today.getFullYear() - birthDate.getFullYear();
+  let months = today.getMonth() - birthDate.getMonth();
+  let days = today.getDate() - birthDate.getDate();
+
+  if (days < 0) {
+    months--;
+    days += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+  }
+
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
+
+  const ageText = `You are ${years} years, ${months} months, and ${days} days old.`;
+
+  const bmi = weight / (height * height);
+  let bmiCategory = "";
+
+  if (bmi < 18.5) bmiCategory = "Underweight";
+  else if (bmi < 24.9) bmiCategory = "Normal weight";
+  else if (bmi < 30) bmiCategory = "Overweight";
+  else bmiCategory = "Obese";
+
+  const bmiText = `Your BMI is ${bmi.toFixed(2)} (${bmiCategory}).`;
+
+  document.getElementById("result").innerText = ageText + "\n" + bmiText;
+}
+
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+  const btn = document.getElementById("toggleBtn");
+  btn.innerText = document.body.classList.contains("dark")
+    ? "Switch to Light Mode"
+    : "Switch to Dark Mode";
+}
